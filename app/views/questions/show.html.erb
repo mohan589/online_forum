@@ -1,0 +1,16 @@
+<div class="container">
+  <p><strong><%= @question.question_content %></strong></p>
+  <small>Submitted <%= time_ago_in_words(@question.created_at) %> ago</small>
+  <br/>
+  <h3>Comments</h3><sub><%= @question.answers.count %> Answer(s)/Comment(s)</sub>
+  <h3>Leave reply</h3>
+  <%= simple_form_for [@question, Answer.new] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :answer, label_html: { class: 'label'} %>
+    <%= f.button :submit, 'Post Your Answer', class: 'btn-primary'%>
+  <% end %>
+  <hr/>
+  <div>
+    <%= render @question.answers %>
+  </div>
+</div>

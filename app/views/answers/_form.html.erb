@@ -1,0 +1,5 @@
+<%= simple_form_for [@question, @question.answers.build] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :answer, label_html: { class: 'label'} %>
+  <%= f.button :submit, 'Post Your Answer', class: 'btn-primary'%>
+<% end %>

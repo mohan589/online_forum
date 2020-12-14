@@ -1,0 +1,9 @@
+<div class="container">
+  <h1 class="title">New Question</h1>
+  <%= simple_form_for @question do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :title, label_html: { class: 'label'} %>
+    <%= f.input :question_content, input_html: { class: 'textarea' }, warpper: false, label_html: { class: 'label'} %>
+    <%= f.button :submit, 'Post Your Question', class: 'btn-primary'%>
+  <% end %>
+</div>

@@ -1,0 +1,25 @@
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#answer-<%= answer.id %>" aria-expanded="true" aria-controls="answer-<%= answer.id %>">
+          <%= answer.answer %>
+        </button>
+      </h5>
+    </div>
+
+    <div id="answer-<%= answer.id %>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <p><small>Submitted <%= time_ago_in_words(answer.created_at) %> ago by <b><%= answer&.user&.email.split('@')[0] %></b></small></p>
+        <%= simple_form_for [answer, Answer.new], label: false do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :answer, label_html: { class: 'label'} %>
+          <%= f.button :submit, 'Reply', class: 'btn-primary'%>
+        <% end %>
+        <br/>
+        <%= render answer.answers %>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
